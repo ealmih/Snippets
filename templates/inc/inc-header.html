@@ -24,6 +24,17 @@
                     </li>
                 </ul>
             </div>
+            {% if request.user.is_authenticated %}
+                <span style="color: white">Добро пожаловать, {{ request.user.username }}</span>
+                <a href="{% url 'logout' %}">Выйти</a>
+            {% else %}
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <input name="username"  type="text" placeholder="Имя">
+                <input name="password"  type="password" placeholder="Пароль">
+                <button type="submit">Войти</button>
+            </form>            
+            {% endif %}
         </div>
     </nav>
 </header>
