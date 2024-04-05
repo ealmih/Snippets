@@ -28,6 +28,7 @@
                         <th scope="col">Название</th>
                         <th scope="col">Дата создания</th>
                         <th scope="col">Пользователь</th>
+                        <th scope="col">Публичный</th>
                         <th scope="col">Изменить</th>
                     </tr>
                 </thead>
@@ -37,13 +38,18 @@
                         <td scope="row">{{ snippet.id }}</td>
                         <td>
                             <a href="{% url 'snippet-detail' snippet.id %}">{{ snippet.name }}</a>
+                            {% if request.user == snippet.user %}
                             <a href="{% url 'snippet-delete' snippet.id %}">
                                 <i style="color:red" class="fa sharp fa-solid fa-trash"></i>
                             </a>
+                            {% endif %}
                         </td>
                         <td>{{ snippet.creation_date }}</td>
                         <td>{{ snippet.user.username }}</td>
+                        <td>{{ snippet.public }}</td>
+                        {% if request.user == snippet.user %}
                         <td><a href="{% url 'snippet-edit' snippet.id %}">Изменить</a></td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>
