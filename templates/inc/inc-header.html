@@ -33,7 +33,12 @@
                 <input name="username"  type="text" placeholder="Имя">
                 <input name="password"  type="password" placeholder="Пароль">
                 <button type="submit">Войти</button>
-            </form>            
+            </form> 
+            {% if errors %}
+                {% for error in errors %}
+                    <li style="color: brown">{{ error }}</li>
+                {% endfor %}
+            {% endif %}
             {% endif %}
         </div>
     </nav>
