@@ -12,3 +12,6 @@ class SnippetForm(ModelForm):
            'name': TextInput(attrs={'placeholder': 'Название сниппета'}),
            'code': TextInput(attrs={'placeholder': 'Код сниппета'})
        }
+       # exlude указываем поля которые нужно исключить
+       # fields  и exclude вместе использовать недься
+       # exclude = ['lang']
